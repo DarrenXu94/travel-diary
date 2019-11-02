@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <button @click="show = !show">
-      <font-awesome-icon v-if="show" icon="caret-down" size="2x" />
-      <font-awesome-icon v-else icon="caret-up" size="2x" />
-    </button>
+  <div id="timeline-container">
+    <div class="toggle-caret">
+      <font-awesome-icon @click="show = !show" v-if="show" icon="caret-down" size="4x" />
+      <font-awesome-icon @click="show = !show" v-else icon="caret-up" size="4x" />
+    </div>
     <transition name="slide-fade">
       <div v-if="show">
         <slot></slot>
@@ -33,5 +33,17 @@ export default {
 /* .slide-fade-leave-active below version 2.1.8 */ {
   transform: translateY(10px);
   opacity: 0;
+}
+
+#timeline-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.toggle-caret {
+  padding-bottom: 20px;
+}
+svg {
+  cursor: pointer;
 }
 </style>

@@ -2,11 +2,11 @@
   <div id="app" class="container">
     <div class="row">
       <div class="col-md-12">
-        <div class="swiper-container">
-          <!-- <p class="swiper-control"> -->
+        <div class="controls">
           <button @click="onClickPrev" type="button" class="btn btn-default btn-sm prev-slide">Prev</button>
           <button @click="onClickNext" type="button" class="btn btn-default btn-sm next-slide">Next</button>
-          <!-- </p> -->
+        </div>
+        <div class="swiper-container">
           <div class="swiper-wrapper timeline">
             <div class="swiper-slide" v-for="item in steps" v-bind:key="item.title">
               <div class="timestamp">
@@ -64,8 +64,13 @@ export default {
 </script>
 
 <style scoped>
+.controls {
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
 .timeline {
-  margin: 50px 0;
+  /* margin: 50px 0; */
   list-style-type: none;
   display: flex;
   padding: 0;
@@ -77,7 +82,7 @@ export default {
 .timestamp {
   width: 200px;
   margin-bottom: 20px;
-  padding: 0px 40px;
+  /* padding: 0px 40px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -114,8 +119,8 @@ export default {
 
 .swiper-container {
   width: 100%;
-  height: 250px;
-  margin: 50px 0;
+  /* height: 250px; */
+  /* margin: 50px 0; */
   overflow: hidden;
   padding: 0 20px 30px 20px;
 }
