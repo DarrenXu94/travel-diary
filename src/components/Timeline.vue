@@ -3,8 +3,12 @@
     <div class="row">
       <div class="col-md-12">
         <div class="controls">
-          <button @click="onClickPrev" type="button" class="btn btn-default btn-sm prev-slide">Prev</button>
-          <button @click="onClickNext" type="button" class="btn btn-default btn-sm next-slide">Next</button>
+          <span class="arrows">
+            <font-awesome-icon @click="onClickPrev" icon="caret-left" size="3x" />
+          </span>
+          <span class="arrows">
+            <font-awesome-icon @click="onClickNext" icon="caret-right" size="3x" />
+          </span>
         </div>
         <div class="swiper-container">
           <div class="swiper-wrapper timeline">
@@ -63,12 +67,23 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+// @import "@/scss/variables.scss";
 .controls {
   padding-bottom: 20px;
   display: flex;
   justify-content: flex-end;
+  .arrows {
+    margin: 10px;
+    cursor: pointer;
+    :hover {
+      color: $bg-classroom;
+    }
+  }
 }
+</style>
+
+<style scoped>
 .timeline {
   /* margin: 50px 0; */
   list-style-type: none;
