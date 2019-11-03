@@ -25,14 +25,17 @@ export default {
 <style scoped>
 .slide-fade-enter-active {
   transition: all 0.3s ease;
+  height: 250px;
 }
 .slide-fade-leave-active {
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in;
+  height: 250px;
 }
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active below version 2.1.8 */ {
-  transform: translateY(10px);
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translateY(100px);
   opacity: 0;
+  height: 0;
 }
 
 #timeline-container {

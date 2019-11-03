@@ -81,9 +81,7 @@ export default {
     }
   }
 }
-</style>
 
-<style scoped>
 .timeline {
   /* margin: 50px 0; */
   list-style-type: none;
@@ -107,7 +105,7 @@ export default {
   padding: 0px 40px;
   display: flex;
   justify-content: center;
-  border-top: 4px solid #3e70ff;
+  border-top: 4px solid $highlight;
   position: relative;
   transition: all 200ms ease-in;
 }
@@ -120,9 +118,9 @@ export default {
   content: "";
   width: 25px;
   height: 25px;
-  background-color: #e8eeff;
+  background-color: $highlight-light;
   border-radius: 25px;
-  border: 4px solid #3e70ff;
+  border: 4px solid $highlight;
   position: absolute;
   top: -15px;
   left: 42%;
