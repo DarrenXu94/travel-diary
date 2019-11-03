@@ -22,7 +22,7 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style lang="scss"  scoped>
 .slide-fade-enter-active {
   transition: all 0.3s ease;
   height: 250px;
@@ -42,9 +42,13 @@ export default {
   position: fixed;
   bottom: 0;
   width: 100%;
+  text-align: center;
 }
 .toggle-caret {
   padding-bottom: 20px;
+  :hover {
+    color: $bg-hover;
+  }
 }
 svg {
   cursor: pointer;

@@ -12,7 +12,12 @@
         </div>
         <div class="swiper-container">
           <div class="swiper-wrapper timeline">
-            <div class="swiper-slide" v-for="item in steps" v-bind:key="item.title">
+            <div
+              class="swiper-slide"
+              v-for="item in steps"
+              v-bind:key="item.title"
+              @click="log(item)"
+            >
               <div class="timestamp">
                 <span class="date">{{item.dateLabel}}</span>
               </div>
@@ -29,26 +34,18 @@
 
 <script>
 import Swiper from "swiper";
-const data = [
-  { dateLabel: "January 2017", title: "Gathering Information" },
-  { dateLabel: "February 2017", title: "Planning" },
-  { dateLabel: "March 2017", title: "Design" },
-  { dateLabel: "April 2017", title: "Content Writing and Assembly" },
-  { dateLabel: "May 2017", title: "Coding" },
-  { dateLabel: "June 2017", title: "Testing, Review & Launch" },
-  { dateLabel: "July 2017", title: "Maintenance" }
-];
+import { getAllTrips } from "@/api/trip";
+
 export default {
   name: "Timeline",
   data() {
     return {
-      steps: data,
+      steps: getAllTrips(),
       swiper: null
     };
   },
   mounted() {
     this.swiper = new Swiper(".swiper-container", {
-      //   pagination: ".swiper-pagination",
       slidesPerView: 4,
       grabCursor: true,
       paginationClickable: true,
@@ -62,13 +59,19 @@ export default {
     },
     onClickNext() {
       this.swiper.slideNext();
+    },
+    log(item) {
+      console.log("clicked", item);
+      this.selected(item.id);
     }
+  },
+  props: {
+    selected: Function
   }
 };
 </script>
 
 <style lang="scss" scoped>
-// @import "@/scss/variables.scss";
 .controls {
   padding-bottom: 20px;
   display: flex;
@@ -77,9 +80,13 @@ export default {
     margin: 10px;
     cursor: pointer;
     :hover {
-      color: $bg-classroom;
+      color: $bg-hover;
     }
   }
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .timeline {
