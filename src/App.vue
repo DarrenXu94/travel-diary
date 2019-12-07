@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <travel-map />
     <trip-information :id="selectedId" :selected="selected" />
     <timeline-container>
       <timeline :selected="selected" />
@@ -11,10 +12,11 @@
 import Timeline from "./components/Timeline";
 import TimelineContainer from "./components/TimelineContainer";
 import TripInformation from "./components/TripInformation";
+import TravelMap from "./components/TravelMap";
 require("swiper/js/swiper.min.js");
 export default {
   name: "app",
-  components: { Timeline, TimelineContainer, TripInformation },
+  components: { Timeline, TimelineContainer, TripInformation, TravelMap },
   data() {
     return {
       selectedId: null
