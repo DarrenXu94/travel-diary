@@ -2,7 +2,7 @@
   <vl-map
     :load-tiles-while-animating="true"
     :load-tiles-while-interacting="true"
-    :style="'height:' + height"
+    :style="'position:absolute; height:' + height"
   >
     <vl-view :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation"></vl-view>
 
