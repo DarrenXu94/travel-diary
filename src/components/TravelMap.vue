@@ -12,6 +12,8 @@
   </vl-map>
 </template>
 <script>
+import { mapGetters, mapState } from "vuex";
+
 export default {
   name: "TravelMap",
   data() {
@@ -21,6 +23,21 @@ export default {
       rotation: 0,
       height: window.innerHeight + "px"
     };
+  },
+  created() {
+    this.init();
+  },
+  methods: {
+    async init() {
+      const trips = this.getAllTrips;
+      console.log(trips);
+      const trips2 = this.allTrips;
+      console.log(trips2);
+    }
+  },
+  computed: {
+    ...mapGetters("Trip", ["getAllTrips"]),
+    ...mapState("Trip", ["allTrips"])
   }
 };
 </script>

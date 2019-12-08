@@ -13,7 +13,9 @@ import Timeline from "./components/Timeline";
 import TimelineContainer from "./components/TimelineContainer";
 import TripInformation from "./components/TripInformation";
 import TravelMap from "./components/TravelMap";
+
 require("swiper/js/swiper.min.js");
+
 export default {
   name: "app",
   components: { Timeline, TimelineContainer, TripInformation, TravelMap },
