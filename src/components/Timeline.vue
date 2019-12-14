@@ -14,7 +14,7 @@
           <div class="swiper-wrapper timeline">
             <div
               class="swiper-slide"
-              v-for="item in steps"
+              v-for="item in getAllTrips"
               v-bind:key="item.title"
               @click="log(item)"
             >
@@ -34,13 +34,14 @@
 
 <script>
 import Swiper from "swiper";
-import { getAllTrips } from "@/api/trip";
+// import { getAllTrips } from "@/api/trip";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Timeline",
   data() {
     return {
-      steps: getAllTrips(),
+      // steps: getAllTrips(),
       swiper: null
     };
   },
@@ -67,6 +68,9 @@ export default {
   },
   props: {
     selected: Function
+  },
+  computed: {
+    ...mapGetters("Trip", ["getAllTrips"])
   }
 };
 </script>

@@ -1,4 +1,4 @@
-export function getAllTrips() {
+export function getAllTripsAPI() {
     const data = [
         { id: "0", dateLabel: "January 2017", title: "Gathering Information" },
         { id: "1", dateLabel: "February 2017", title: "Planning" },

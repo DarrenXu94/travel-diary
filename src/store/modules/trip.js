@@ -1,5 +1,7 @@
+import { getAllTripsAPI } from "@/api/trip";
+
 const state = {
-    allTrips: ['test'],
+    allTrips: [],
     allTripsLoading: false,
     selectedTrip: null
 }
@@ -11,11 +13,23 @@ const getters = {
 }
 
 const actions = {
+    getAllTripsRequest({ commit }) {
+        commit('mutate', { property: "allTripsLoading", with: true })
+
+        setTimeout(() => {
+            const res = getAllTripsAPI()
+            commit('mutate', { property: "allTrips", with: res })
+            commit('mutate', { property: "allTripsLoading", with: false })
+
+        }, 3000)
+    }
 
 }
 
 const mutations = {
-
+    mutate(state, payload) {
+        state[payload.property] = payload.with;
+    }
 }
 
 export default {

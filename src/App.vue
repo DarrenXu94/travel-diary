@@ -16,9 +16,14 @@ import TravelMap from "./components/TravelMap";
 
 require("swiper/js/swiper.min.js");
 
+import { mapActions } from "vuex";
+
 export default {
   name: "app",
   components: { Timeline, TimelineContainer, TripInformation, TravelMap },
+  created() {
+    this.getAll();
+  },
   data() {
     return {
       selectedId: null
@@ -27,7 +32,10 @@ export default {
   methods: {
     selected(id) {
       this.selectedId = id;
-    }
+    },
+    ...mapActions({
+      getAll: "Trip/getAllTripsRequest"
+    })
   }
 };
 </script>
