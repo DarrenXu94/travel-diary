@@ -1,16 +1,32 @@
 <template>
   <transition v-if="id" name="slide-fade">
-    <div class="trip-info">
+    <div class="trip-info" v-if="!selectedTripLoading">
       <div class="top">
         <font-awesome-icon @click="close" icon="times" size="2x" />
       </div>
-      <div class="body">Trip information {{id}}</div>
+      <div class="body" v-if="getSelectedTrip">
+        <h2>{{getSelectedTrip.title}}</h2>
+        <p>{{getSelectedTrip.dateLabel}}</p>
+        Trip information {{id}}
+      </div>
+    </div>
+    <div class="trip-info" v-else>
+      <div class="body">
+        <p style="text-align: center">Loading trip</p>
+        <spinner />
+      </div>
     </div>
   </transition>
 </template>
 <script>
+import { mapGetters, mapState } from "vuex";
+import Spinner from "@/components/utility/Spinner";
+
 export default {
   name: "TripInformation",
+  components: {
+    Spinner
+  },
   props: {
     id: {
       type: String
@@ -21,6 +37,10 @@ export default {
     close() {
       this.selected(null);
     }
+  },
+  computed: {
+    ...mapGetters("Trip", ["getSelectedTrip"]),
+    ...mapState("Trip", ["selectedTripLoading"])
   }
 };
 </script>

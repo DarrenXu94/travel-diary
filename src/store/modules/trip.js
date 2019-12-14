@@ -3,25 +3,41 @@ import { getAllTripsAPI } from "@/api/trip";
 const state = {
     allTrips: [],
     allTripsLoading: false,
-    selectedTrip: null
+    selectedTrip: null,
+    selectedTripLoading: false
 }
 
 const getters = {
     getAllTrips: state => {
         return state.allTrips
+    },
+
+    getSelectedTrip: state => {
+        return state.selectedTrip
     }
 }
 
 const actions = {
     getAllTripsRequest({ commit }) {
         commit('mutate', { property: "allTripsLoading", with: true })
-
         setTimeout(() => {
-            const res = getAllTripsAPI()
-            commit('mutate', { property: "allTrips", with: res })
+            commit('mutate', { property: "allTrips", with: getAllTripsAPI() })
             commit('mutate', { property: "allTripsLoading", with: false })
 
         }, 3000)
+    },
+
+    selectIndividualTrip({ commit, state }, property) {
+        commit('mutate', { property: "selectedTripLoading", with: true })
+        const specificTrip = state.allTrips.find(el => {
+            return el.id == property
+        })
+        setTimeout(() => {
+            commit('mutate', { property: "selectedTrip", with: specificTrip })
+            commit('mutate', { property: "selectedTripLoading", with: false })
+
+        }, 3000)
+
     }
 
 }

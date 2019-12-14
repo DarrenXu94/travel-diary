@@ -32,9 +32,11 @@ export default {
   methods: {
     selected(id) {
       this.selectedId = id;
+      this.getIndividual(id);
     },
     ...mapActions({
-      getAll: "Trip/getAllTripsRequest"
+      getAll: "Trip/getAllTripsRequest",
+      getIndividual: "Trip/selectIndividualTrip"
     })
   }
 };
