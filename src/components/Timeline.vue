@@ -105,6 +105,7 @@ export default {
 }
 .timestamp {
   width: 200px;
+  margin: auto;
   margin-bottom: 20px;
   /* padding: 0px 40px; */
   display: flex;
