@@ -46,15 +46,49 @@ export default {
     };
   },
   mounted() {
-    this.swiper = new Swiper(".swiper-container", {
-      slidesPerView: 4,
-      grabCursor: true,
-      paginationClickable: true,
-      nextButton: ".next-slide",
-      prevButton: ".prev-slide"
-    });
+    this.createSwiper();
+  },
+  created() {
+    window.addEventListener("resize", this.myEventHandler);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.myEventHandler);
   },
   methods: {
+    myEventHandler(e) {
+      this.createSwiper();
+    },
+    createSwiper() {
+      const timelineWidth = 200;
+      const slides = window.innerWidth / timelineWidth;
+      this.swiper = new Swiper(".swiper-container", {
+        slidesPerView: slides,
+        grabCursor: true,
+        paginationClickable: true,
+        nextButton: ".next-slide",
+        prevButton: ".prev-slide",
+        breakpoints: {
+          220: {
+            slidesPerView: 2
+          },
+          440: {
+            slidesPerView: 3
+          },
+          660: {
+            slidesPerView: 4
+          },
+          880: {
+            slidesPerView: 5
+          },
+          1000: {
+            slidesPerView: 6
+          },
+          1220: {
+            slidesPerView: 7
+          }
+        }
+      });
+    },
     onClickPrev() {
       this.swiper.slidePrev();
     },
@@ -154,10 +188,28 @@ export default {
   text-align: center;
   font-size: 18px;
 }
-.swiper-slide:nth-child(2n) {
-  width: 40%;
-}
-.swiper-slide:nth-child(3n) {
-  width: 20%;
-}
+// .swiper-slide:nth-child(2n) {
+//   width: 40%;
+// }
+// .swiper-slide:nth-child(3n) {
+//   width: 20%;
+// }
+// .swiper-slide {
+//   text-align: center;
+//   font-size: 18px;
+//   background: #fff;
+//   /* Center slide text vertically */
+//   display: -webkit-box;
+//   display: -ms-flexbox;
+//   display: -webkit-flex;
+//   display: flex;
+//   -webkit-box-pack: center;
+//   -ms-flex-pack: center;
+//   -webkit-justify-content: center;
+//   justify-content: center;
+//   -webkit-box-align: center;
+//   -ms-flex-align: center;
+//   -webkit-align-items: center;
+//   align-items: center;
+// }
 </style>
