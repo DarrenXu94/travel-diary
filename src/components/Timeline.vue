@@ -55,7 +55,7 @@ export default {
     window.removeEventListener("resize", this.myEventHandler);
   },
   methods: {
-    myEventHandler(e) {
+    myEventHandler() {
       this.createSwiper();
     },
     createSwiper() {

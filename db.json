@@ -1,0 +1,18 @@
+{
+    "trips": [
+        {
+            "id": "0",
+            "dateLabel": "January 2017",
+            "title": "Gathering Information",
+            "locations": [
+                {
+                    "order": 0,
+                    "coordinate": [
+                        -33.826790,
+                        151.021891
+                    ]
+                }
+            ]
+        }
+    ]
+}
