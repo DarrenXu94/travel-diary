@@ -8,6 +8,7 @@
         <h2>{{getSelectedTrip.title}}</h2>
         <p>{{getSelectedTrip.dateLabel}}</p>
         Trip information {{id}}
+        <locations :locationArray="getSelectedTrip.locations" />
       </div>
     </div>
     <div class="trip-info" v-else>
@@ -21,11 +22,13 @@
 <script>
 import { mapGetters, mapState } from "vuex";
 import Spinner from "@/components/utility/Spinner";
+import Locations from "./TripInformationComponents/Locations";
 
 export default {
   name: "TripInformation",
   components: {
-    Spinner
+    Spinner,
+    Locations
   },
   props: {
     id: {

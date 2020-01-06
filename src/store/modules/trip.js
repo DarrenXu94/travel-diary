@@ -20,8 +20,9 @@ const getters = {
 const actions = {
     getAllTripsRequest({ commit }) {
         commit('mutate', { property: "allTripsLoading", with: true })
-        setTimeout(() => {
-            commit('mutate', { property: "allTrips", with: getAllTripsAPI() })
+        setTimeout(async () => {
+            const res = await getAllTripsAPI()
+            commit('mutate', { property: "allTrips", with: res.data })
             commit('mutate', { property: "allTripsLoading", with: false })
 
         }, 3000)
